@@ -1,0 +1,3 @@
+- insert:
+    - id: terminal-panel
+      name: dsh-terminal-panel

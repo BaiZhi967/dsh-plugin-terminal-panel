@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220" role="img" aria-label="dsh-plugin-terminal-panel">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#131f36"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="220" rx="18" fill="url(#bg)"/>
+
+  <!-- left rail: the sidebar panel icon with its active-terminal badge -->
+  <rect x="26" y="30" width="52" height="160" rx="12" fill="#0e1a2e"/>
+  <rect x="38" y="52" width="28" height="24" rx="6" fill="none" stroke="#4d6bfe" stroke-width="2"/>
+  <path d="M45 60l5 4-5 4" fill="none" stroke="#4d6bfe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54 70h7" stroke="#4d6bfe" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="68" cy="50" r="9" fill="#4d6bfe"/>
+  <text x="68" y="54" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+
+  <!-- main column: the terminal panel -->
+  <rect x="94" y="30" width="780" height="160" rx="14" fill="#080f1c" stroke="#22304a"/>
+  <rect x="94.5" y="30.5" width="779" height="34" rx="13" fill="#101c30" stroke="#22304a"/>
+  <rect x="108" y="40" width="146" height="20" rx="6" fill="#17253d"/>
+  <circle cx="121" cy="50" r="4" fill="#16a34a"/>
+  <text x="131" y="54" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#dbe6f5">Terminal 1</text>
+  <text x="266" y="54" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#7d8fae">+ New Terminal</text>
+
+  <!-- screen -->
+  <text x="116" y="96" font-family="Cascadia Mono,Consolas,Menlo,monospace" font-size="13.5" fill="#dbe6f5">PS E:\DSH&gt; npm run dev</text>
+  <text x="116" y="122" font-family="Cascadia Mono,Consolas,Menlo,monospace" font-size="13.5" fill="#b5ba00">&gt; vite --port 5173</text>
+  <text x="116" y="148" font-family="Cascadia Mono,Consolas,Menlo,monospace" font-size="13.5" fill="#7d8fae">  ready in 412 ms</text>
+  <rect x="116" y="158" width="8" height="15" fill="#4d6bfe" opacity="0.85"/>
+  <text x="136" y="171" font-family="Cascadia Mono,Consolas,Menlo,monospace" font-size="13.5" fill="#dbe6f5">PS E:\DSH&gt;</text>
+</svg>

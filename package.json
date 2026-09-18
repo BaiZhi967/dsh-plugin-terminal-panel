@@ -1,0 +1,55 @@
+{
+  "name": "dsh-terminal-panel",
+  "version": "1.0.1",
+  "description": "In-page terminal panel for DeepSeek Harness: real PTY terminals opened from the sidebar, with tabs, rename and live replay. DSH 网页内的终端面板插件。",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./host.js",
+    "./client": "./client.js"
+  },
+  "files": [
+    "host.js",
+    "impl.js",
+    "client.js",
+    "cordis.patch.yml",
+    "assets",
+    "README.md",
+    "README_EN.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    }
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "plugin",
+    "cordis",
+    "terminal",
+    "pty",
+    "web-terminal",
+    "sidebar"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaiZhi967/dsh-plugin-terminal-panel.git"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": ">=0.1.6-alpha.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
