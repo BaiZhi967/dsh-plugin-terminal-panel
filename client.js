@@ -1231,49 +1231,30 @@ window.__ModuleLoader__.load({
 
     function installLocale(ctx) {
       const locale = ctx.get('locale');
-      if (!locale || typeof locale.register !== 'function' || typeof locale.getLocale !== 'function') return;
+      if (!locale || typeof locale.register !== 'function') return;
       runtime.locale = locale;
-      const dictFor = (id) => (/^zh/i.test(id) ? DICTS.zh : DICTS.en);
-      const done = new Set();
-      const sync = () => {
-        let snapshot;
-        try {
-          snapshot = locale.getLocale();
-        } catch (err) {
-          return;
-        }
-        const defs = new Map(((snapshot && snapshot.locales) || []).map((entry) => [entry.id, entry]));
-        const seen = new Set();
-        let id = snapshot && snapshot.active;
-        while (id && !seen.has(id)) {
-          seen.add(id);
-          if (!done.has(id)) {
-            try {
-              locale.register(NS, id, dictFor(id));
-            } catch (err) {
-              /* already registered */
-            }
-            done.add(id);
-          }
-          const definition = defs.get(id);
-          id = definition && definition.fallback ? definition.fallback : undefined;
-        }
-      };
-      sync();
-      if (typeof locale.subscribe === 'function') ctx.effect(() => locale.subscribe(sync));
+      /*
+       * Register the complete zh/en dictionary once, up front. Registering only
+       * whichever language happened to be active at mount time made lookups for
+       * the new language miss until the next locale notification, so different
+       * parts of the UI flipped languages at different moments.
+       */
+      try {
+        ctx.effect(() => locale.register(NS, { en: DICTS.en, zh: DICTS.zh }));
+      } catch (err) {
+        /* a previous instance already owns this namespace */
+      }
       if (typeof locale.bind === 'function') {
         try {
           const bound = locale.bind(NS);
-          if (typeof bound === 'function') {
-            runtime.t = (key) => {
-              try {
-                const text = bound(key);
-                return text === undefined || text === null ? key : String(text);
-              } catch (err) {
-                return key;
-              }
-            };
-          }
+          runtime.t = (key, params) => {
+            try {
+              const text = bound(key, params);
+              return text === undefined || text === null ? key : String(text);
+            } catch (err) {
+              return key;
+            }
+          };
         } catch (err) {
           /* keep the built-in dictionary */
         }
@@ -1293,7 +1274,7 @@ window.__ModuleLoader__.load({
           return () => window.clearInterval(timer);
         });
         ctx.slots.inject('main', () =>
-          ctx.slots.register({ name: 'main', key: PANEL_KEY }, TerminalPanel),
+          ctx.slots.register({ name: 'main', key: PANEL_KEY, locale: NS }, TerminalPanel),
         );
         ctx.slots.inject('sidebar.panellist', () =>
           ctx.slots.register(
@@ -1301,6 +1282,7 @@ window.__ModuleLoader__.load({
               name: 'sidebar.panellist',
               id: PANEL_KEY,
               order: 22,
+              locale: NS,
               label: () => {
                 const running = store.snapshot.items.filter((item) => item.status === 'running').length;
                 return running ? runtime.t('title') + ' · ' + running : runtime.t('title');
