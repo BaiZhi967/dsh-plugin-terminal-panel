@@ -44,7 +44,7 @@ Reload the page once and the terminal icon appears in the sidebar.
 > Plain JavaScript: no build step, no runtime dependencies.
 > If the package cannot be resolved, the mirror usually has not synced the latest version yet — install once against the official registry, or retry later:
 > `dsh plugin --profile web add dsh-terminal-panel --registry=https://registry.npmjs.org/`
-> Requirements: DSH `>= 0.1.6-alpha.2`, Node `^22.19.0 || >=24.0.0`, and a host with a working PTY (this plugin uses `subprocess.spawnTerminal`, i.e. the bundled node-pty).
+> Requirements: DSH `>= 0.2.0-rc.2`, Node `^22.19.0 || >=24.0.0`, and a host with a working PTY (this plugin uses `subprocess.spawnTerminal`, i.e. the bundled node-pty).
 
 ## 🚀 Usage
 

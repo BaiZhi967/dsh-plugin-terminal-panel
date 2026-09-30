@@ -44,7 +44,7 @@ dsh --profile web
 > 纯 JS 实现：无构建步骤、无运行时依赖。
 > 若提示找不到包，通常是镜像尚未同步新版本 —— 可指定官方源再装一次，或稍后重试：
 > `dsh plugin --profile web add dsh-terminal-panel --registry=https://registry.npmjs.org/`
-> 环境要求：DSH `>= 0.1.6-alpha.2`、Node `^22.19.0 || >=24.0.0`；宿主进程需要有可用 PTY（本插件用 `subprocess.spawnTerminal`，即宿主自带的 node-pty）。
+> 环境要求：DSH `>= 0.2.0-rc.2`、Node `^22.19.0 || >=24.0.0`；宿主进程需要有可用 PTY（本插件用 `subprocess.spawnTerminal`，即宿主自带的 node-pty）。
 
 ## 🚀 用法
 
