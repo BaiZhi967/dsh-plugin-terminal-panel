@@ -1,6 +1,6 @@
 {
   "name": "dsh-terminal-panel",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "In-page terminal panel for DeepSeek Harness: real PTY terminals opened from the sidebar, with tabs, rename and live replay. DSH 网页内的终端面板插件。",
   "license": "MIT",
   "type": "module",
