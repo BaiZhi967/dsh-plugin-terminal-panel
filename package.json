@@ -1,7 +1,7 @@
 {
   "name": "dsh-terminal-panel",
-  "version": "1.0.4",
-  "description": "In-page terminal panel for DeepSeek Harness: real PTY terminals opened from the sidebar, with tabs, rename and live replay. DSH 网页内的终端面板插件。",
+  "version": "1.3.0",
+  "description": "In-page terminal panel for DeepSeek Harness: real PTY terminals in the sidebar — PowerShell 7 / Windows PowerShell / cmd / Git Bash, starting in your home directory — plus a settings panel and nine switchable terminal_* tools for the agent. DSH 网页内的终端面板插件。",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -16,6 +16,7 @@
     "assets",
     "README.md",
     "README_EN.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "dsh": {
@@ -38,7 +39,9 @@
     "terminal",
     "pty",
     "web-terminal",
-    "sidebar"
+    "sidebar",
+    "git-bash",
+    "agent-tools"
   ],
   "repository": {
     "type": "git",
